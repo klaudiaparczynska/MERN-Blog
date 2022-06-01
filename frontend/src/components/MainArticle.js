@@ -11,7 +11,7 @@ function MainArticle({article}) {
         </Col>
         <Col md={6} >
             <h2>{title}</h2>
-            <div dangerouslySetInnerHTML={{__html: content?.substring(0, 200)}}/>
+            <div dangerouslySetInnerHTML={{__html: content?.substring(0, 200)}}/> 
             <LinkContainer to={`/articles/${_id}`}>
                 <Button variant='btn btn-primary'>
                     Read More

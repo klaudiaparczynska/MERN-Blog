@@ -14,8 +14,7 @@ const authUser = async(req, res, next) => {
         next()
     }
     catch(e) {
-        //res.status(401).send({error: e.message})
-        res.status(401).send("dupa jasia")
+        res.status(401).send({error: e.message})
     }
 }
 

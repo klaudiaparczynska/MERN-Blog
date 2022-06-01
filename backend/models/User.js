@@ -13,6 +13,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: 'string',
+        match: [/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/, 'at least eight characters, one letter and one number'], 
         required: [true, "Cant be blank"],
     },
     tokens: [],
@@ -27,6 +28,7 @@ const validate = (data) => {
     return schema.validate(data)
 }
 
+//before saving user - hash password
 UserSchema.pre('save', function(next){
     const user = this;
     if(!user.isModified('password')) return next();
@@ -56,6 +58,7 @@ UserSchema.methods.generateAuthToken = async function() {
     await user.save()
     return token
 }
+
 UserSchema.statics.findByCredentials = async function(email, password) {
     const user = await User.findOne({email})
     if(!user) throw new Error('Invalid email or password')

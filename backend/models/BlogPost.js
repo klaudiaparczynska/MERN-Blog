@@ -1,10 +1,4 @@
 const mongoose = require('mongoose')
-const dateOptons = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'string',
-    day: 'numeric'
-}
 
 const BlogPostSchema = new mongoose.Schema({
     creator: {
